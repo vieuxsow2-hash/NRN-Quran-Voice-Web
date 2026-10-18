@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#073b30">
+<title>NRN Quran Voice</title>
+<style>
+:root {
+  --green:#073b30;
+  --green2:#105747;
+  --gold:#d8b56d;
+  --cream:#f8f5ec;
+  --ink:#23342e;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:system-ui,-apple-system,sans-serif;
+}
+header {
+  background:linear-gradient(135deg,var(--green),#0d5a45);
+  color:white;
+  padding:30px 20px 26px;
+  text-align:center;
+  border-bottom:4px solid var(--gold);
+}
+.logo {
+  display:inline-grid;
+  place-items:center;
+  width:62px;height:62px;
+  border:2px solid var(--gold);
+  border-radius:50%;
+  color:var(--gold);
+  font-weight:800;font-size:23px;
+  margin-bottom:8px;
+}
+header h1 { margin:5px 0; letter-spacing:2px; }
+header p { margin:8px 0 0;color:#e6e5d8; }
+nav {
+  display:flex;justify-content:center;gap:8px;
+  flex-wrap:wrap;padding:14px;
+  background:white;border-bottom:1px solid #e8e2d5;
+}
+button,select,input {
+  font:inherit;
+}
+nav button,.action {
+  border:0;border-radius:9px;padding:11px 15px;
+  cursor:pointer;
+}
+nav button { background:#edf2ed;color:var(--green); }
+nav button.active,.action {
+  background:var(--green);color:white;
+}
+main { max-width:850px;margin:auto;padding:22px 16px 45px; }
+h2 { color:var(--green); }
+.card {
+  background:white;border:1px solid #e7e1d4;
+  border-radius:16px;padding:20px;margin:15px 0;
+  box-shadow:0 4px 15px #20352a0b;
+}
+.hero {
+  background:var(--green);color:white;
+  border-bottom:3px solid var(--gold);
+}
+.hero h2 { color:var(--gold); }
+.hero p { line-height:1.7; }
+label { display:block;margin:12px 0 6px;font-weight:600; }
+input,select {
+  width:100%;padding:12px;border:1px solid #d7d9d0;
+  border-radius:9px;background:white;
+}
+.action { margin:8px 6px 0 0; }
+.secondary { background:#eee9dc;color:var(--green); }
+.arabic {
+  direction:rtl;text-align:right;
+  font-size:27px;line-height:2;
+  font-family:"Noto Naskh Arabic","Amiri",serif;
+}
+.muted { color:#68756d;font-size:14px;line-height:1.6; }
+.tag {
+  color:#785a21;background:#f7efd9;
+  border-radius:20px;padding:5px 10px;font-size:12px;
+}
+footer { text-align:center;padding:24px;color:#647067;font-size:13px; }
+[hidden] { display:none !important; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">NRN</div>
+  <h1>QURAN VOICE</h1>
+  <p>Lectura · Recitación · Reflexión</p>
+</header>
+
+<nav aria-label="Secciones">
+  <button class="active" data-page="home">Inicio</button>
+  <button data-page="quran">Corán</button>
+  <button data-page="khass">Khassaïd</button>
+  <button data-page="favorites">Favoritos</button>
+  <button data-page="settings">Ajustes</button>
+</nav>
+
+<main>
+  <section id="home" class="page">
+    <div class="card hero">
+      <span class="tag">PROYECTO NRN</span>
+      <h2>Un espacio de lectura espiritual</h2>
+      <p>Accede a las secciones del Corán y los khassaïd de Serigne Touba desde una experiencia sencilla y respetuosa.</p>
+      <button class="action" data-go="quran">Leer el Corán</button>
+      <button class="action secondary" data-go="khass">Descubrir los khassaïd</button>
+    </div>
+    <div class="card">
+      <h2>السلام عليكم</h2>
+      <p class="arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+      <p>En el nombre de Allah, el Compasivo, el Misericordioso.</p>
+      <p class="muted">Texto de apertura del Corán. La conexión con fuentes verificadas se incorporará en una siguiente fase.</p>
+    </div>
+  </section>
+
+  <section id="quran" class="page" hidden>
+    <div class="card">
+      <h2>Lectura del Corán</h2>
+      <p>Prepararemos el índice de suras, el texto árabe y el audio a partir de fuentes fiables.</p>
+      <p class="arabic">القرآن الكريم</p>
+      <p class="muted">Esta versión inicial todavía no contiene el texto completo ni un reproductor de recitación. No representa una biblioteca completa del Corán.</p>
+    </div>
+  </section>
+
+  <section id="khass" class="page" hidden>
+    <div class="card hero">
+      <h2>Khassaïd de Serigne Touba</h2>
+      <p>Cheikh Ahmadou Bamba · Lectura en árabe y español</p>
+    </div>
+    <div class="card">
+      <span class="tag">PRIMERA OBRA</span>
+      <h2>Matlabul Fawzayni</h2>
+      <p class="arabic">مَطْلَبُ الْفَوْزَيْنِ</p>
+      <p>Texto árabe original y traducción al español.</p>
+      <p class="muted">La obra completa y su traducción están pendientes de cotejo con una edición fiable. No se muestran versos inventados ni traducciones no verificadas.</p>
+      <button class="action" id="sourceBtn">Consultar referencia de lectura</button>
+      <p id="sourceInfo" class="muted" hidden>Referencia externa: Ixassida. Comprueba el texto y los permisos antes de reutilizarlo.</p>
+    </div>
+  </section>
+
+  <section id="favorites" class="page" hidden>
+    <div class="card">
+      <h2>Mis favoritos ⭐</h2>
+      <p class="muted">Tus elementos guardados en este navegador aparecerán aquí.</p>
+      <ul id="favList"></ul>
+      <p id="emptyFav">Todavía no tienes favoritos.</p>
+      <button class="action secondary" id="addFav">Guardar Matlabul Fawzayni</button>
+    </div>
+  </section>
+
+  <section id="settings" class="page" hidden>
+    <div class="card">
+      <h2>Ajustes</h2>
+      <label for="language">Idioma de la interfaz</label>
+      <select id="language">
+        <option value="es">Español</option>
+        <option value="ar">العربية</option>
+        <option value="fr">Français</option>
+      </select>
+      <p class="muted">La selección de idioma se guardará en este navegador. La traducción completa de la interfaz se incorporará más adelante.</p>
+      <label for="size">Tamaño del texto árabe</label>
+      <select id="size">
+        <option value="27">Normal</option>
+        <option value="32">Grande</option>
+        <option value="38">Muy grande</option>
+      </select>
+      <button class="action" id="saveSettings">Guardar ajustes</button>
+      <p id="settingsStatus" class="muted" aria-live="polite"></p>
+    </div>
+  </section>
+</main>
+
+<footer>NRN Quran Voice · Lectura con respeto, autenticidad y cuidado</footer>
+
+<script>
+const pages = document.querySelectorAll(".page");
+const navButtons = document.querySelectorAll("nav button");
+
+function showPage(id) {
+  pages.forEach(p => p.hidden = p.id !== id);
+  navButtons.forEach(b => b.classList.toggle("active", b.dataset.page === id));
+  window.scrollTo({top:0,behavior:"smooth"});
+  if (id === "favorites") renderFavorites();
+}
+
+navButtons.forEach(b => b.addEventListener("click", () => showPage(b.dataset.page)));
+document.querySelectorAll("[data-go]").forEach(b =>
+  b.addEventListener("click", () => showPage(b.dataset.go))
+);
+
+document.getElementById("sourceBtn").addEventListener("click", () => {
+  document.getElementById("sourceInfo").hidden = false;
+  window.open("https://www.ixassida.com/lecture/matlaboulfawzeyni",
+    "_blank","noopener,noreferrer");
+});
+
+function getFavorites() {
+  try { return JSON.parse(localStorage.getItem("nrnFavorites") || "[]"); }
+  catch { return []; }
+}
+function renderFavorites() {
+  const list = document.getElementById("favList");
+  const items = getFavorites();
+  list.replaceChildren();
+  items.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    list.appendChild(li);
+  });
+  document.getElementById("emptyFav").hidden = items.length > 0;
+}
+document.getElementById("addFav").addEventListener("click", () => {
+  const items = getFavorites();
+  if (!items.includes("Matlabul Fawzayni")) items.push("Matlabul Fawzayni");
+  try {
+    localStorage.setItem("nrnFavorites", JSON.stringify(items));
+    renderFavorites();
+  } catch {
+    alert("No se pudo guardar en este navegador.");
+  }
+});
+document.getElementById("saveSettings").addEventListener("click", () => {
+  try {
+    localStorage.setItem("nrnLanguage", document.getElementById("language").value);
+    localStorage.setItem("nrnArabicSize", document.getElementById("size").value);
+    document.querySelectorAll(".arabic").forEach(el => {
+      el.style.fontSize = document.getElementById("size").value + "px";
+    });
+    document.getElementById("settingsStatus").textContent = "Ajustes guardados en este navegador.";
+  } catch {
+    document.getElementById("settingsStatus").textContent = "No se pudieron guardar los ajustes.";
+  }
+});
+try {
+  const size = localStorage.getItem("nrnArabicSize");
+  const lang = localStorage.getItem("nrnLanguage");
+  if (size) {
+    document.getElementById("size").value = size;
+    document.querySelectorAll(".arabic").forEach(el => el.style.fontSize = size + "px");
+  }
+  if (lang) document.getElementById("language").value = lang;
+} catch {}
+</script>
+</body>
+</html>
